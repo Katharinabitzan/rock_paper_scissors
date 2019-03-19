@@ -1,26 +1,32 @@
 class Game
+attr_reader :player1, :player2
+
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
   end
 
-  def play
-
-    if @player1 == "scissor" && @player2 == "rock"
-      return "rock beats scissor, Player 2 wins!"
-    elsif @player1 == "rock" && @player2 == "scissor"
-      return "scissor beats paper, Player 2 wins!"
-    elsif @player1 == "scissor" && @player2 == "paper"
-      return "scissor beats paper, Player 1 wins!"
-    elsif @player1 == "paper" && @player2 == "scissor"
-      return "scissor beats paper, Player 2 wins!"
-    elsif @player1 == "rock" && @player2 == "paper"
-      return "paper beats rock, Player 2 wins!"
-    elsif @player1 == "paper" && @player2 == "rock"
-      return "paper beats rock, Player 1 wins!"
+  def play()
+  moves = [@player1, @player2]
+    if @player1 == @player2
+      return "Draw! Try again."
+    elsif moves.include?("scissor") && moves.include?("rock")
+      winning_move = moves.index("rock")
+      return "Rock beats Scissor. Player #{winning_move + 1} wins!"
+    elsif moves.include?("rock") && moves.include?("paper")
+      winning_move = moves.index("paper")
+      return "Paper beats Rock. Player #{winning_move + 1} wins!"
+    elsif moves.include?("paper") && moves.include?("scissor")
+      winning_move = moves.index("scissor")
+      return "Scissor beats Paper. Player #{winning_move + 1} wins!"
     else
-      return "Not valid game"
+      return "Not valid game. Please try again."
     end
+  end
+
+  def count_games
+    counter = 0
+
   end
 
 end
